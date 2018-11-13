@@ -20,3 +20,6 @@ class Bet(models.Model):
         max_length=1,
         default=BetStateChoice.O
     )
+
+    def __str__(self):
+        return "Description: {}, Bettor: {}, Opponent: {}, Deadline: {}, Outcome: {}".format(self.description, self.bettor, self.opponent, self.deadline, self.outcome)
