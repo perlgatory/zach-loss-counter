@@ -1,11 +1,11 @@
-from enum import Enum
+from enumchoicefield import ChoiceEnum
 
-class BetResultChoice(Enum):
+class BetResultChoice(ChoiceEnum):
     W = "Opponent Lost"
     L = "Bettor Lost"
     T = "Everyone Lost(tied)"
 
-class BetStateChoice(Enum):
+class BetStateChoice(ChoiceEnum):
     C = "Completed"
     O = "Open"
     A = "Abandoned"
