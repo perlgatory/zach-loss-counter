@@ -1,0 +1,28 @@
+{% if bets %}
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Bettor</th>
+      <th>Opponent</th>
+      <th>Wager</th>
+      <th>Deadline</th>
+      <th>State</th>
+      <th>Outcome</th>
+      <th>Creation Date</th>
+    </tr>
+  {% for bet in bets %}
+    <tr>
+      <td>{{bet.id}}</td>
+      <td>{{bet.description}}</td>
+      <td>{{bet.bettor}}</td>
+      <td>{{bet.opponent}}</td>
+      <td>{{bet.wager}}</td>
+      <td>{{bet.deadline}}</td>
+      <td>{{bet.state}}</td>
+      <td>{{bet.outcome}}</td>
+      <td>{{bet.created_at}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endif %}
