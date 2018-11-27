@@ -19,3 +19,12 @@ def detail(request, bet_id):
         'bet': bet,
     }
     return HttpResponse(template.render(context, request))
+
+def new(request):
+    template = loader.get_template('bets/new.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def create(request):
+    #description, bettor, opponent, wager, deadline
+    #redirect to detail of new bet
