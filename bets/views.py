@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import get_object_or_404
 
 from .models import Bet
 
@@ -12,4 +13,9 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def detail(request, bet_id):
-    return HttpResponse("You're looking at the details of bet {}".format(bet_id))
+    bet = get_object_or_404(Bet, pk=bet_id)
+    template = loader.get_template('bets/detail.html')
+    context = {
+        'bet': bet,
+    }
+    return HttpResponse(template.render(context, request))
