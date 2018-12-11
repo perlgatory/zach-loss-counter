@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 from .models import Bet
 
@@ -26,5 +27,15 @@ def new(request):
     return HttpResponse(template.render(context, request))
 
 def create(request):
-    #description, bettor, opponent, wager, deadline
-    #redirect to detail of new bet
+    try:
+        bet = Bet.objects.create(
+            description=request.POST['description'],
+            bettor=request.POST['bettor'],
+            opponent=request.POST['opponent'],
+            wager=request.POST['wager'],
+            deadline=request.POST['deadline']
+        )
+        return HttpResponseRedirect(reverse('detail', args=(bet.id,)))
+
+    except KeyError as error:
+        return HttpResponse("There was an issue with {}.".format(error))
