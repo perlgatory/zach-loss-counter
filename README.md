@@ -1,2 +1,2 @@
-# zach-loss-counter
+# zach-Win-counter
 A bet tracking app
