@@ -1,8 +1,10 @@
-<form action="{% url 'bets.create' %}" method="POST">
+<form action="{% url 'create' %}" method="POST">
     {% csrf_token %}
-    {% for fieldname in ["description", "bettor", "opponent", "wager"] %}
-    <input type="text" name="{{fieldname}}" />
-    {% endfor %}
+    {% with 'description bettor opponent wager' as list %}
+        {% for fieldname in list.split %}
+        <input type="text" name="{{fieldname}}" placeholder="{{fieldname}}"/>
+        {% endfor %}
+    {% endwith%}
     <input type="date" name="deadline" />
     <input type="submit" value="Embetten" />
 </form>
