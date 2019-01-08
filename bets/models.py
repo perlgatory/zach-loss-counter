@@ -2,11 +2,11 @@ from django.db import models
 from .enums import *
 from enumchoicefield import ChoiceEnum, EnumChoiceField
 
-# Create your models here.
 
+# Create your models here.
 class Bet(models.Model):
     description = models.TextField()
-    wager =  models.TextField()
+    wager = models.TextField()
     bettor = models.CharField(max_length=100)
     opponent = models.CharField(max_length=100)
     deadline = models.DateTimeField('end date')
@@ -15,4 +15,5 @@ class Bet(models.Model):
     state = EnumChoiceField(BetStateChoice, default=BetStateChoice.O)
 
     def __str__(self):
-        return "Description: {}, Bettor: {}, Opponent: {}, Deadline: {}, Outcome: {}".format(self.description, self.bettor, self.opponent, self.deadline, self.outcome)
+        return "Description: {}, Bettor: {}, Opponent: {}, Deadline: {}, Outcome: {}"\
+            .format(self.description, self.bettor, self.opponent, self.deadline, self.outcome)

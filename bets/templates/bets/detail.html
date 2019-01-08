@@ -17,10 +17,10 @@
       <td>{{bet.bettor}}</td>
       <td>{{bet.opponent}}</td>
       <td>{{bet.wager}}</td>
-      <td>{{bet.deadline}}</td>
+      <td>{{bet.deadline | date:'M. j, Y'}}</td>
       <td>{{bet.state}}</td>
       <td>{{bet.outcome}}</td>
-      <td>{{bet.created_at}}</td>
+      <td>{{bet.created_at | date:'M. j, Y'}}</td>
     </tr>
   </table>
 {% else %}
