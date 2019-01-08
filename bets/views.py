@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from .models import Bet
 
+
 def index(request):
     bets = Bet.objects.order_by('created_at')
     template = loader.get_template('bets/index.html')
@@ -12,6 +13,7 @@ def index(request):
         'bets': bets,
     }
     return HttpResponse(template.render(context, request))
+
 
 def detail(request, bet_id):
     bet = get_object_or_404(Bet, pk=bet_id)
@@ -21,10 +23,12 @@ def detail(request, bet_id):
     }
     return HttpResponse(template.render(context, request))
 
+
 def new(request):
     template = loader.get_template('bets/new.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
 
 def create(request):
     try:
