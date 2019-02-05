@@ -1,13 +1,32 @@
+{% extends 'base.html' %}
 {% block title %}New Bet {% endblock %}
 {% block content %}
+<h3>New Bet</h3>
 <form action="{% url 'create' %}" method="POST">
     {% csrf_token %}
-    {% with 'description bettor opponent wager' as list %}
-        {% for fieldname in list.split %}
-        <input type="text" name="{{fieldname}}" placeholder="{{fieldname}}"/>
-        {% endfor %}
-    {% endwith%}
-    <input type="date" name="deadline" />
-    <input type="submit" value="Embetten" />
+    <div class="row">
+        <div class="col">
+            {% with 'description bettor opponent wager' as list %} {% for fieldname in list.split %}
+            <div class="form-group">
+                <label for="{{fieldname}}">{{fieldname|title}}</label>
+
+                <input type="text" class="form-control" name="{{fieldname}}" placeholder="{{fieldname}}" id="{{fieldname}}" />
+                <small class="form-text text-muted">Field help text will go here.</small>
+            </div>
+            {% endfor %} {% endwith%}
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" name="deadline" class="form-control" />
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" >
+            <a href="{% url 'index' %}" class="btn btn-warning">Cancel</a>
+            <input type="submit" value="Embetten" class="btn btn-primary" />
+        </div>
+    </div>
 </form>
 {% endblock %}
