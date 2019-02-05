@@ -1,7 +1,5 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'bets/style.css' %}">
-
+{% block title %}Bet Detail{% endblock %}
+{% block content %}
 {% if bet %}
   <table>
     <tr>
@@ -30,3 +28,4 @@
 {% else %}
 <h1>Uh-oh. No bet specified.</h1>
 {% endif %}
+{% endblock %}

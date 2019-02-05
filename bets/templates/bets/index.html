@@ -1,7 +1,8 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'bets/style.css' %}">
-
+{% extends 'base.html' %}
+{% block title %}
+Bet List
+{% endblock %}
+{% block content %}
 {% if bets %}
   <table>
     <tr>
@@ -30,5 +31,6 @@
   {% endfor %}
   </table>
 {% else %}
-  <h1>Quick! Go make a bet!</h1>
+  <h1>Quick! Go <a href="{% url 'new' %}">make a bet</a>!</h1>
 {% endif %}
+{% endblock %}

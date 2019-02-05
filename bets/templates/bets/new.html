@@ -1,3 +1,5 @@
+{% block title %}New Bet {% endblock %}
+{% block content %}
 <form action="{% url 'create' %}" method="POST">
     {% csrf_token %}
     {% with 'description bettor opponent wager' as list %}
@@ -8,3 +10,4 @@
     <input type="date" name="deadline" />
     <input type="submit" value="Embetten" />
 </form>
+{% endblock %}
