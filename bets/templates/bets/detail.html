@@ -1,32 +1,36 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'bets/style.css' %}">
-
+{% extends 'base.html' %}
+{% block title %}Bet Detail{% endblock %}
+{% block content %}
 {% if bet %}
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Description</th>
-      <th>Bettor</th>
-      <th>Opponent</th>
-      <th>Wager</th>
-      <th>Deadline</th>
-      <th>State</th>
-      <th>Outcome</th>
-      <th>Creation Date</th>
-    </tr>
-    <tr>
-      <td>{{bet.id}}</td>
-      <td>{{bet.description}}</td>
-      <td>{{bet.bettor}}</td>
-      <td>{{bet.opponent}}</td>
-      <td>{{bet.wager}}</td>
-      <td>{{bet.deadline | date:'M. j, Y'}}</td>
-      <td>{{bet.state}}</td>
-      <td>{{bet.outcome}}</td>
-      <td>{{bet.created_at | date:'M. j, Y'}}</td>
-    </tr>
+<h3>{{bet.description}} (ID: {{bet.id}})</h3>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Description</th>
+              <th>Bettor</th>
+              <th>Opponent</th>
+              <th>Wager</th>
+              <th>Deadline</th>
+              <th>State</th>
+              <th>Outcome</th>
+              <th>Creation Date</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{bet.description}}</td>
+              <td>{{bet.bettor}}</td>
+              <td>{{bet.opponent}}</td>
+              <td>{{bet.wager}}</td>
+              <td>{{bet.deadline | date:'M. j, Y'}}</td>
+              <td>{{bet.state}}</td>
+              <td>{{bet.outcome}}</td>
+              <td>{{bet.created_at | date:'M. j, Y'}}</td>
+          </tr>
+      </tbody>
   </table>
+  <a href="{% url 'index' %}" class="btn">View Bets</a>
 {% else %}
 <h1>Uh-oh. No bet specified.</h1>
 {% endif %}
+{% endblock %}

@@ -1,34 +1,44 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'bets/style.css' %}">
-
+{% extends 'base.html' %}
+{% block title %}
+Bet List
+{% endblock %}
+{% block content %}
 {% if bets %}
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Description</th>
-      <th>Bettor</th>
-      <th>Opponent</th>
-      <th>Wager</th>
-      <th>Deadline</th>
-      <th>State</th>
-      <th>Outcome</th>
-      <th>Creation Date</th>
-    </tr>
+<h3>Bet List</h3>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Bettor</th>
+              <th>Opponent</th>
+              <th>Wager</th>
+              <th>Deadline</th>
+              <th>State</th>
+              <th>Outcome</th>
+              <th>Creation Date</th>
+              <th>Button</th>
+          </tr>
+      </thead>
   {% for bet in bets %}
-    <tr>
-      <td>{{bet.id}}</td>
-      <td>{{bet.description}}</td>
-      <td>{{bet.bettor}}</td>
-      <td>{{bet.opponent}}</td>
-      <td>{{bet.wager}}</td>
-      <td>{{bet.deadline}}</td>
-      <td>{{bet.state}}</td>
-      <td>{{bet.outcome}}</td>
-      <td>{{bet.created_at}}</td>
-    </tr>
-  {% endfor %}
+      <tbody>
+          <tr>
+              <td>{{bet.id}}</td>
+              <td>{{bet.description}}</td>
+              <td>{{bet.bettor}}</td>
+              <td>{{bet.opponent}}</td>
+              <td>{{bet.wager}}</td>
+              <td>{{bet.deadline}}</td>
+              <td>{{bet.state}}</td>
+              <td>{{bet.outcome}}</td>
+              <td>{{bet.created_at}}</td>
+              <td><a href="{% url 'detail' bet.id %}">Detail</a> </td>
+          </tr>
+      </tbody>
+      {% endfor %}
   </table>
+  <a href="{% url 'new' %}">Make a bet</a>
 {% else %}
-  <h1>Quick! Go make a bet!</h1>
+  <h1>Quick! Go <a href="{% url 'new' %}">make a bet</a>!</h1>
 {% endif %}
+{% endblock %}
